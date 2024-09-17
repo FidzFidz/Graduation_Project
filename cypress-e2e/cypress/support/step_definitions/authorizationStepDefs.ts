@@ -10,45 +10,33 @@ Given("admin navigate to the index page", () => {
     AuthorizationPO.getInstance().navigate();
 });
 
-When("admin sees the manage tags on his dashboard with email {string} and password {string}", (email: string, password: string) => {
-    const loginData: AuthorizationModel = {
-        email: email,
-        password: password
-    };
-    AuthorizationPO.getInstance().login_tag(loginData);
-
-});
-
-When("admin can check manage tags URL with email {string} and password {string}", (email: string, password: string) => {
-    const loginData: AuthorizationModel = {
-        email: email,
-        password: password
-    };
-    AuthorizationPO.getInstance().url_tag(loginData);
-
-});
-
-When("admin can access any content in the manage tags page with email {string} and password {string}", (email: string, password: string) => {
-    const loginData: AuthorizationModel = {
-        email: email,
-        password: password
-    };
-    AuthorizationPO.getInstance().content_tag(loginData);
-
+When("admin clicks on the login", () => {
+    AuthorizationPO.getInstance().login();
 });
 
 
-// Authorization Memebrs test cases 
-
-Given("members navigate to the index page", () => {
-    AuthorizationPO.getInstance().navigate();
+When("admin fills the email with email {string}", (email: string) => {
+    AuthorizationPO.getInstance().fill_email(email);
 });
 
-When("user tries to access the manage tags URL with email {string} and password {string}", (email: string, password: string) => {
-    const loginData: AuthorizationModel = {
-        email: email,
-        password: password
-    };
-    AuthorizationPO.getInstance().member_tag(loginData);
+When("admin fills the password with password {string}", (password: string) => {
+    AuthorizationPO.getInstance().fill_password(password);
+});
 
+When("admin clicks on the login form", () => {
+    AuthorizationPO.getInstance().click_login_button();
+});
+
+Then("admin sees the manage tags hyperlink", () => {
+    AuthorizationPO.getInstance().check_manage_tags_hyperlink();
+});
+
+// Testing the Scenario #2
+
+When("admin clicks on the manage tags hyperlink", () => {
+    AuthorizationPO.getInstance().click_manage_tags();
+});
+
+Then("admin sees the URL for the Tags", () => {
+    AuthorizationPO.getInstance().manage_tag_url();
 });
