@@ -38,14 +38,26 @@ class AuthorizationPO {
     public check_manage_tags_hyperlink() {
         cy.contains("Manage Tags")
     }
-    
-    public click_manage_tags (){
+
+    public click_manage_tags() {
         cy.get(AuthorizationLocators.MANAGE_TAGS).click()
     }
-    public manage_tag_url(){
+    public manage_tag_url() {
         cy.visit('http://localhost:3000/tags')
 
     }
+    public access_manage_tags() {
+        cy.contains("Professional")
+
+    }
+
+    public user_login(){
+        cy.contains("Welcome user_1@zenhr.com To ZenHR Automation Graduation Project")
+    }
+
+
+
+
 }
 export default AuthorizationPO
 

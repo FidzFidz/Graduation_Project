@@ -31,7 +31,7 @@ Then("admin sees the manage tags hyperlink", () => {
     AuthorizationPO.getInstance().check_manage_tags_hyperlink();
 });
 
-// Testing the Scenario #2
+// Testing Scenario #2
 
 When("admin clicks on the manage tags hyperlink", () => {
     AuthorizationPO.getInstance().click_manage_tags();
@@ -40,3 +40,37 @@ When("admin clicks on the manage tags hyperlink", () => {
 Then("admin sees the URL for the Tags", () => {
     AuthorizationPO.getInstance().manage_tag_url();
 });
+
+// Testing Scenario #3 
+
+Then("admin can access the manage tags page", () => {
+    AuthorizationPO.getInstance().manage_tag_url();
+});
+
+// Testing Scenario #4 
+
+Given("user navigate to the index page", () => {
+    AuthorizationPO.getInstance().navigate();
+});
+
+When("user clicks on the login", () => {
+    AuthorizationPO.getInstance().login();
+});
+
+
+When("user fills the email with email {string}", (email: string) => {
+    AuthorizationPO.getInstance().fill_email(email);
+});
+
+When("user fills the password with password {string}", (password: string) => {
+    AuthorizationPO.getInstance().fill_password(password);
+});
+
+When("user clicks on the login form", () => {
+    AuthorizationPO.getInstance().click_login_button();
+});
+
+Then("manage tags don't appear", () => {
+    AuthorizationPO.getInstance().user_login();
+});
+
