@@ -19,14 +19,31 @@ class authenticationPO {
         cy.visit("/");
     }
 
-    public login(data: AuthenticationModel) {
-        cy.wait(1000)
+    public login() {
         cy.get(AuthenticationLocators.LOGIN).click()
-        cy.sendTextToElement(AuthenticationLocators.EMAIL, data.email)
-        cy.sendTextToElement(AuthenticationLocators.PASSWORD, data.password)
-        cy.get(AuthenticationLocators.LOGIN_FORM).click()
     }
 
+    public fill_email(email: string) {
+        cy.sendTextToElement(AuthenticationLocators.EMAIL, email);
+    }
+
+    public fill_password(password: string) {
+        cy.sendTextToElement(AuthenticationLocators.PASSWORD, password);
+    }
+
+    public click_login_button() {
+        cy.get(AuthenticationLocators.LOGIN_FORM).click();
+    }
+
+    public verify_redirection_to_dashboard() {
+        cy.contains("Dashboard")
+
+    }
+
+    public wrong_password(){
+        cy.contains("false")
+
+    }
 
 }
 
