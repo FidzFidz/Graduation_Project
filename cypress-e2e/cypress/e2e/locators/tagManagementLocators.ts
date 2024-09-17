@@ -8,7 +8,8 @@ enum TagManagementLocators {
   MANAGE_TAGS = "[data-e2e='manage_tags']",
   NEW_TAG = "[data-e2e='new_tag']",
   NEW_NAME = "[data-e2e='new_name']",
-  SUBMIT_NEW_TAG = "[data-e2e='submit']"
+  SUBMIT_NEW_TAG = "[data-e2e='submit']",
+  BACK_TO_TAGS = "[data-e2e='back_to_tags']"
 
 
 }

@@ -17,41 +17,64 @@ class TagManagementPO {
         cy.visit("/");
     }
 
-    public list_tag(data: TagManagementModel) {
+
+    public login() {
         cy.get(TagManagementLocators.LOGIN).click()
-        cy.sendTextToElement(TagManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(TagManagementLocators.PASSWORD, data.password)
-        cy.get(TagManagementLocators.LOGIN_FORM).click()
-        cy.get(TagManagementLocators.MANAGE_TAGS).click()
-        cy.wait(1000)
+    }
+
+    public fill_email(email: string) {
+        cy.sendTextToElement(TagManagementLocators.EMAIL, email);
+    }
+
+    public fill_password(password: string) {
+        cy.sendTextToElement(TagManagementLocators.PASSWORD, password);
+    }
+
+    public click_login_button() {
+        cy.get(TagManagementLocators.LOGIN_FORM).click();
+    }
+    public click_manage_tags() {
+        cy.get(TagManagementLocators.MANAGE_TAGS).click();
+    }
+    public list_tags() {
         cy.contains("Professional")
 
     }
-    public create_new_tag(data: TagManagementModel) {
-        cy.get(TagManagementLocators.LOGIN).click()
-        cy.sendTextToElement(TagManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(TagManagementLocators.PASSWORD, data.password)
-        cy.get(TagManagementLocators.LOGIN_FORM).click()
-        cy.get(TagManagementLocators.MANAGE_TAGS).click()
-        cy.get(TagManagementLocators.NEW_TAG).click()
-        cy.sendTextToElement(TagManagementLocators.NEW_NAME, data.name)
-        cy.get(TagManagementLocators.SUBMIT_NEW_TAG).click()
+
+    // Checking Scenario #2
+
+    public new_tag() {
+        cy.get(TagManagementLocators.NEW_TAG).click();
 
     }
 
-    public check_validation_message(data: TagManagementModel) {
-        cy.get(TagManagementLocators.LOGIN).click()
-        cy.sendTextToElement(TagManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(TagManagementLocators.PASSWORD, data.password)
-        cy.get(TagManagementLocators.LOGIN_FORM).click()
-        cy.get(TagManagementLocators.MANAGE_TAGS).click()
-        cy.get(TagManagementLocators.NEW_TAG).click()
-        cy.sendTextToElement(TagManagementLocators.NEW_NAME, data.name)
-        cy.get(TagManagementLocators.SUBMIT_NEW_TAG).click()
-
+    public fill_name(name: string) {
+        cy.sendTextToElement(TagManagementLocators.NEW_NAME, name);
     }
+
+    public submit_click() {
+        cy.get(TagManagementLocators.SUBMIT_NEW_TAG).click()
+    }
+
+    public flash_message() {
+        cy.contains("Tag was successfully created.")
+    }
+
+    // Checking Scenario #3
+
+    public back_to_tag(){
+        cy.get(TagManagementLocators.BACK_TO_TAGS).click()
+        cy.wait(1000)
+    }
+
+    public error_message() {
+        cy.contains("Name has already been taken")
+        cy.wait(1000)
+    }
+
+
+
 
 
 }
-
 export default TagManagementPO

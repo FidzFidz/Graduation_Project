@@ -5,51 +5,57 @@ import TagManagementPO from "../../e2e/pageobjects/tagManagementPO";
 
 
 
-Given("admin navigate to the index page2", () => {
+Given("admin navigate to index page", () => {
     TagManagementPO.getInstance().navigate();
 });
 
-When("admin clicks on the manage tags and check lists with email {string} and password {string} and name {string}", (email: string, password: string, name: string) => {
-    const loginData: TagManagementModel = {
-        email: "admin@zenhr.com",
-        password: "Fidz1",
-        name: " "
-    };
-    TagManagementPO.getInstance().list_tag(loginData);
-
+When("admin clicks on the login button", () => {
+    TagManagementPO.getInstance().login();
 });
 
-
-Given("admin navigate to the index page4", () => {
-    TagManagementPO.getInstance().navigate();
+When("admin fills in the email with email {string}", (email: string) => {
+    TagManagementPO.getInstance().fill_email(email);
 });
 
-// when we try to create the below cases we need to make sure that the name should be a new name in order to check last test case
-
-When("admin clicks on the submit to create a new tag to check the new tag with email {string} and password {string} and name {string}", (email: string, password: string, name: string) => {
-    const loginData: TagManagementModel = {
-        email: "admin@zenhr.com",
-        password: "Fidz1",
-        name: "HelloFidz3"
-    };
-    TagManagementPO.getInstance().create_new_tag(loginData);
-
+When("admin fills in the password with password {string}", (password: string) => {
+    TagManagementPO.getInstance().fill_password(password);
 });
 
-Given("admin navigate to the index page5", () => {
-    TagManagementPO.getInstance().navigate();
+When("admin clicks on the login form button", () => {
+    TagManagementPO.getInstance().click_login_button();
 });
 
-
-When("admin clicks on the submit to create a new tag to check the flash error message with email {string} and password {string} and name {string}", (email: string, password: string, name: string) => {
-    const loginData: TagManagementModel = {
-        email: "admin@zenhr.com",
-        password: "Fidz1",
-        name: "Football"
-    };
-    TagManagementPO.getInstance().create_new_tag(loginData);
-
+When("admin clicks the manage tags", () => {
+    TagManagementPO.getInstance().click_manage_tags();
 });
 
+Then("seeds already exisits", () => {
+    TagManagementPO.getInstance().list_tags();
+});
 
+// Checking Scenario #2
 
+When("admin clicks on the new tag", () => {
+    TagManagementPO.getInstance().new_tag();
+});
+
+When("admin fills the name field with name {string}", (name: string) => {
+    TagManagementPO.getInstance().fill_name(name);
+});
+
+When("clicks on the submit button", () => {
+    TagManagementPO.getInstance().submit_click();
+});
+
+Then("flash message appears", () => {
+    TagManagementPO.getInstance().flash_message();
+});
+
+// Checking Scenario #3
+When("admin clicks on the back to tags button", () => {
+    TagManagementPO.getInstance().back_to_tag();
+});
+
+Then("Name has already been taken validation appears", () => {
+    TagManagementPO.getInstance().error_message();
+});

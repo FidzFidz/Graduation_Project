@@ -1,15 +1,44 @@
 Feature: Tag Management
 
 
-
     Scenario: Verify that listing already exisits based on the seeds
-        Given admin navigate to the index page2
-        When admin clicks on the manage tags and check lists with email "admin@zenhr.com" and password "Fidz1" and name " "
+        Given admin navigate to index page
+        When admin clicks on the login button
+        When admin fills in the email with email "admin@zenhr.com"
+        When admin fills in the password with password "Fidz1"
+        When admin clicks on the login form button
+        When admin clicks the manage tags
+        Then seeds already exisits
+
+# Testing Scenario #2
+
 
     Scenario: Verify that the creating new tag is working correctly
-        Given admin navigate to the index page4
-        Then admin clicks on the submit to create a new tag to check the new tag with email "admin@zenhr.com" and password "Fidz1" and name "HelloFidz3"
+        Given admin navigate to index page
+        When admin clicks on the login button
+        When admin fills in the email with email "admin@zenhr.com"
+        When admin fills in the password with password "Fidz1"
+        When admin clicks on the login form button
+        When admin clicks the manage tags
+        When admin clicks on the new tag
+        When admin fills the name field with name "Waino Fidz Keefo"
+        When clicks on the submit button
+        Then duplicated error message appears
 
-    Scenario: Verify that the duplicated error message appears
-        Given admin navigate to the index page5
-        Then admin clicks on the submit to create a new tag to check the flash error message with email "admin@zenhr.com" and password "Fidz1" and name "Football"
+ # Testing Scenario #3
+
+
+    Scenario: Verify that the creating new tag is working correctly
+        Given admin navigate to index page
+        When admin clicks on the login button
+        When admin fills in the email with email "admin@zenhr.com"
+        When admin fills in the password with password "Fidz1"
+        When admin clicks on the login form button
+        When admin clicks the manage tags
+        When admin clicks on the new tag
+        When admin fills the name field with name "Waino Fidz Keefo"
+        When admin clicks on the back to tags button
+        When admin clicks on the new tag
+        When admin fills the name field with name "Waino Fidz Keefo"
+        When clicks on the submit button
+        Then Name has already been taken validation appears
