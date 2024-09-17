@@ -13,13 +13,13 @@
   <% end %>
   <div>
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email , html_options= {'data-e2e': 'email'}%>
   </div>
   <div>
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password , html_options= {'data-e2e': 'password'}%>
   </div>
   <p>
-    <%= f.submit "Login" %>
+    <%= f.submit "Login" , html_options= {'data-e2e': 'login_form'} %>
   </p>
 <% end %>

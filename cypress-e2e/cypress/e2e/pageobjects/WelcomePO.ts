@@ -16,6 +16,7 @@ class WelcomePO {
     }
 
     public verifyWelcomeMessageExists (){
+        cy.visit("/")
         cy.get(WelcomeLocators.WELCOME_HEADER).should("be.visible")
     }
 
