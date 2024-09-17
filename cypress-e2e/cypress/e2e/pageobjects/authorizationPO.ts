@@ -43,7 +43,7 @@ class AuthorizationPO {
         cy.get(AuthorizationLocators.MANAGE_TAGS).click()
     }
     public manage_tag_url(){
-       cy.contains("Professional")
+        cy.visit('http://localhost:3000/tags')
 
     }
 }

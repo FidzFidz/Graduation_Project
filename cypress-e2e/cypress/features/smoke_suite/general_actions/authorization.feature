@@ -23,15 +23,6 @@ Feature: User authorization
 
 
 
-
-
-
-
-# Scenario: Verify that the admin can check the manage tags URL
-
-#     Given admin navigate to the index page
-#     When admin can check manage tags URL with email "admin@zenhr.com" and password "Fidz1"
-
 # Scenario: Verify that the admin should access the manage tags
 
 #     Given admin navigate to the index page
