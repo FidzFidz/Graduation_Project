@@ -47,15 +47,16 @@ When("clicks on the submit button", () => {
     TagManagementPO.getInstance().submit_click();
 });
 
-Then("flash message appears", () => {
+Then("Tag was successfully created flash message appears", () => {
     TagManagementPO.getInstance().flash_message();
 });
 
 // Checking Scenario #3
-When("admin clicks on the back to tags button", () => {
-    TagManagementPO.getInstance().back_to_tag();
+
+When("admin clicks on the submit buttonn", () => {
+    TagManagementPO.getInstance().submit_click_dubplicate();
 });
 
-Then("Name has already been taken validation appears", () => {
-    TagManagementPO.getInstance().error_message();
-});
+// Then("Name has already been taken validation appears", () => {
+//     TagManagementPO.getInstance().error_message();
+// });

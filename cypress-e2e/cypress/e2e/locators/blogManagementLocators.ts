@@ -15,7 +15,7 @@ enum BlogManagementLocators {
     EDIT_SHOW_BLOG = "[data-e2e='show_this_blog_18']", //Don't delete #18
     SHOW_BLOG_WITHOUT_EDIT = "[data-e2e='show_this_blog_2']",
     DESTROY = "[data-e2e='destroy_blog']",
-    DESTROY_THIS_BLOG_20 = "[data-e2e='show_this_blog_25']"
+    DESTROY_THIS_BLOG_20 = "[data-e2e='show_this_blog_23']" // changing it after applying the destroy
 
 
 

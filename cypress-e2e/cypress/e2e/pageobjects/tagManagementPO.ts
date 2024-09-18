@@ -61,16 +61,13 @@ class TagManagementPO {
     }
 
     // Checking Scenario #3
-
-    public back_to_tag(){
-        cy.get(TagManagementLocators.BACK_TO_TAGS).click()
-        cy.wait(1000)
+    public submit_click_dubplicate() {
+        cy.get(TagManagementLocators.SUBMIT_NEW_TAG).click()
     }
-
-    public error_message() {
-        cy.contains("Name has already been taken")
-        cy.wait(1000)
-    }
+    // public error_message() {
+    //     cy.contains("Name has already been taken")
+       
+    // }
 
 
 

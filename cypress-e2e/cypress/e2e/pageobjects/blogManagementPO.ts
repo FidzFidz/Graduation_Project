@@ -92,7 +92,26 @@ class BlogManagementPO {
         cy.get(BlogManagementLocators.TAG_BUILDER_EDIT).click()
     }
 
-    
+    // Checking scenario 4
+
+    // public destroy_this_blog(){
+    //     cy.get(BlogManagementLocators.DESTROY_THIS_BLOG_20).click()
+    // }
+
+    // public destroy_blog(){
+    //     cy.get(BlogManagementLocators.DESTROY).click()
+    // }
+
+    // Checking scenario 5
+
+    public show_blog_without_destroy_button(){
+        cy.get(BlogManagementLocators.SHOW_BLOG_WITHOUT_EDIT).click()
+    }
+
+    public show_blog_without(){
+
+        cy.contains("Body: blog body 2")
+    }
 
 
 

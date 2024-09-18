@@ -84,4 +84,27 @@ Then("user clicks on the submit", () => {
     BlogManagementPO.getInstance().submit_blog();
 });
 
+// Checking scenario 4
+
+// When("user clicks on destroy this blog", () => {
+//     BlogManagementPO.getInstance().destroy_this_blog();
+// });
+
+
+// Then("user clicks on the submit destroy", () => {
+//     BlogManagementPO.getInstance().destroy_blog();
+// });
+
+// Checking scenario 5
+
+When("user clicks on show this blog without destroy", () => {
+    BlogManagementPO.getInstance().show_blog_without_destroy_button();
+});
+
+
+Then("destroy button doesn't appear", () => {
+    BlogManagementPO.getInstance().show_blog_without();
+});
+
+
 

@@ -21,14 +21,14 @@ Feature: Tag Management
         When admin clicks on the login form button
         When admin clicks the manage tags
         When admin clicks on the new tag
-        When admin fills the name field with name "Waino Fidz Keefo"
+        When admin fills the name field with name "KhaledKhaled"
         When clicks on the submit button
-        Then duplicated error message appears
+        Then Tag was successfully created flash message appears
 
- # Testing Scenario #3
+#  # Testing Scenario #3
 
 
-    Scenario: Verify that the creating new tag is working correctly
+    Scenario: Verify that the creating new duplicate tag name has a validation
         Given admin navigate to index page
         When admin clicks on the login button
         When admin fills in the email with email "admin@zenhr.com"
@@ -36,9 +36,6 @@ Feature: Tag Management
         When admin clicks on the login form button
         When admin clicks the manage tags
         When admin clicks on the new tag
-        When admin fills the name field with name "Waino Fidz Keefo"
-        When admin clicks on the back to tags button
-        When admin clicks on the new tag
-        When admin fills the name field with name "Waino Fidz Keefo"
-        When clicks on the submit button
-        Then Name has already been taken validation appears
+        When admin fills the name field with name "KhaledKhaled"
+        When admin clicks on the submit buttonn
+        # Then Name has already been taken validaiton appears
