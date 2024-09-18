@@ -1,5 +1,8 @@
+import { blob } from "node:stream/consumers";
 import BlogManagementLocators from "../locators/blogManagementLocators";
 import BlogManagementModel from "../model/blogManagementModel";
+import { stdin } from "node:process";
+import { strict } from "node:assert";
 
 
 class BlogManagementPO {
@@ -19,81 +22,82 @@ class BlogManagementPO {
         cy.visit("/");
     }
 
-    public create_new_blog(data: BlogManagementModel) {
+    public login() {
         cy.get(BlogManagementLocators.LOGIN).click()
-        cy.sendTextToElement(BlogManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(BlogManagementLocators.PASSWORD, data.password)
-        cy.get(BlogManagementLocators.LOGIN_FORM).click()
-        cy.get(BlogManagementLocators.BLOGS).click()
-        cy.get(BlogManagementLocators.NEW_BLOG).click()
-        cy.sendTextToElement(BlogManagementLocators.TITLE, data.title)
-        cy.sendTextToElement(BlogManagementLocators.BODY, data.body)
-        cy.get(BlogManagementLocators.TAG_BUILDER).click()
-        cy.get(BlogManagementLocators.SUBMIT_NEW_BLOG).click()
     }
 
-    public check_empty_validation(data: BlogManagementModel) {
-        cy.get(BlogManagementLocators.LOGIN).click()
-        cy.sendTextToElement(BlogManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(BlogManagementLocators.PASSWORD, data.password)
-        cy.get(BlogManagementLocators.LOGIN_FORM).click()
-        cy.get(BlogManagementLocators.BLOGS).click()
-        cy.get(BlogManagementLocators.NEW_BLOG).click()
-        cy.sendTextToElement(BlogManagementLocators.TITLE, data.title)
-        cy.sendTextToElement(BlogManagementLocators.BODY, data.body)
-        cy.get(BlogManagementLocators.TAG_BUILDER).click()
-        cy.get(BlogManagementLocators.SUBMIT_NEW_BLOG).click()
+    public fill_email(email: string) {
+        cy.sendTextToElement(BlogManagementLocators.EMAIL, email);
     }
 
-    public edit_personal_blog(data: BlogManagementModel) {
-        cy.get(BlogManagementLocators.LOGIN).click()
-        cy.sendTextToElement(BlogManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(BlogManagementLocators.PASSWORD, data.password)
-        cy.get(BlogManagementLocators.LOGIN_FORM).click()
+    public fill_password(password: string) {
+        cy.sendTextToElement(BlogManagementLocators.PASSWORD, password);
+    }
+
+    public click_login_button() {
+        cy.get(BlogManagementLocators.LOGIN_FORM).click();
+    }
+    
+    public blogs_button(){
         cy.get(BlogManagementLocators.BLOGS).click()
+    }
+
+    public new_blog(){
+        cy.get(BlogManagementLocators.NEW_BLOG).click()
+
+    }
+    public fill_title(title: string){
+        cy.sendTextToElement(BlogManagementLocators.TITLE, title)
+    }
+    public fill_body(body: string){
+        cy.sendTextToElement(BlogManagementLocators.BODY, body)
+    }
+    public tag_builder(){
+        cy.get(BlogManagementLocators.TAG_BUILDER).click()
+    }
+
+    public submit_blog(){
+        cy.get(BlogManagementLocators.SUBMIT_NEW_BLOG).click()
+    } 
+
+    public creation_flash_message(){
+        cy.contains("Blog was successfully created.")
+    }
+
+    // Checking scenario #2
+
+    public empty_title(title: string){
+        cy.sendTextToElement(BlogManagementLocators.TITLE, title)
+    }
+
+    //  Checking scenario #3
+
+    public edit_blog(){
         cy.get(BlogManagementLocators.EDIT_SHOW_BLOG).click()
+    }
+
+    public edit_this_blog(){
         cy.get(BlogManagementLocators.EDIT_BLOG).click()
-        cy.get(BlogManagementLocators.TITLE).type("New Blog 2")
-        cy.get(BlogManagementLocators.BODY).type("New Blog 2")
+    }
+
+    public edit_title_field(title: string){
+        cy.sendTextToElement(BlogManagementLocators.TITLE, title)
+    }
+
+    public edit_body_field(body: string){
+        cy.sendTextToElement(BlogManagementLocators.TITLE, body)
+    }
+
+    public edit_tag_builder(){
         cy.get(BlogManagementLocators.TAG_BUILDER_EDIT).click()
-        cy.get(BlogManagementLocators.SUBMIT_NEW_BLOG).click()
-
     }
 
-    // The below test cases to check a user without edit this blog button
-    public edit_button(data: BlogManagementModel) {
-        cy.get(BlogManagementLocators.LOGIN).click()
-        cy.sendTextToElement(BlogManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(BlogManagementLocators.PASSWORD, data.password)
-        cy.get(BlogManagementLocators.LOGIN_FORM).click()
-        cy.get(BlogManagementLocators.BLOGS).click()
-        cy.get(BlogManagementLocators.SHOW_BLOG_WITHOUT_EDIT).click()
-        cy.get(BlogManagementLocators.EDIT_BLOG).should('not.exist');
-    }
+    
 
-    // Destroy test cases
 
-    public destroy_personal_blog(data: BlogManagementModel) {
-        cy.get(BlogManagementLocators.LOGIN).click()
-        cy.sendTextToElement(BlogManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(BlogManagementLocators.PASSWORD, data.password)
-        cy.get(BlogManagementLocators.LOGIN_FORM).click()
-        cy.get(BlogManagementLocators.BLOGS).click()
-        cy.get(BlogManagementLocators.DESTROY_THIS_BLOG_20).click()
-        cy.get(BlogManagementLocators.DESTROY).click()
 
-    }
 
-    // The below test cases to check a user without edit this blog button
-    public destroy_not_found(data: BlogManagementModel) {
-        cy.get(BlogManagementLocators.LOGIN).click()
-        cy.sendTextToElement(BlogManagementLocators.EMAIL, data.email)
-        cy.sendTextToElement(BlogManagementLocators.PASSWORD, data.password)
-        cy.get(BlogManagementLocators.LOGIN_FORM).click()
-        cy.get(BlogManagementLocators.BLOGS).click()
-        cy.get(BlogManagementLocators.SHOW_BLOG_WITHOUT_EDIT).click()
-        cy.get(BlogManagementLocators.EDIT_BLOG).should('not.exist');
-    }
+
 
 
 }
